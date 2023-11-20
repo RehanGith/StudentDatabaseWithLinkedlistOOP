@@ -22,6 +22,7 @@ struct Date
 };
 class Snode
 {
+private:
     int regNum{};
     std::string name;
     std::string fname;
@@ -35,8 +36,8 @@ public:
     void setter();
     void getter() const;
     bool search(int);
-    Snode* get_Next();
-    void set_Next(Snode* node);
+    Snode*& get_Next();
+    void set_Next( Snode* node);
     ~Snode();
 };
 void create_database(Snode*& first, int nn);

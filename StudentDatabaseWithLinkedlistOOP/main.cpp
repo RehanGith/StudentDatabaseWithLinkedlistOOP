@@ -47,11 +47,11 @@ int main() {
                 cout << "Not Found in the Data Base" << endl;
             break;
         case 4: // Deletion
-            cout << "Enter reg. number to search: ";
+            cout << "Enter reg. number to Delete: ";
             cin >> sinfo;
             index = delete_record(first, sinfo, n);
             if (index != -1)
-                cout << "Found at position: " << index << endl;
+                cout << "Sucessfully Deleted" << endl;
             else
                 cout << "Not Found in the Data Base" << endl;
             break;

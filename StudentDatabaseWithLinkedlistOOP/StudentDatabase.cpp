@@ -106,6 +106,7 @@ Snode::Snode() :marks{} {
     doa.mm = 0;
     doa.yy = 0;
     cgpa = 0;
+    Next = nullptr;
 }
 void Snode::setter() {
 
@@ -176,15 +177,14 @@ bool Snode::search(int info) {
     else
         return false;
 }
-Snode* Snode::get_Next() {
+Snode*& Snode::get_Next() {
     return Next;
 }
 void Snode::set_Next(Snode* node) {
-    Next = new Snode();
     Next = node;
 }
 Snode::~Snode() {
-    delete Next;
+    
 }
 void create_database(Snode*& first, int nn) {
     if (!nn) {
