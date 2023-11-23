@@ -184,7 +184,7 @@ void Snode::set_Next(Snode* node) {
     Next = node;
 }
 Snode::~Snode() {
-    
+    cout << "\nDestructor calls.\n";
 }
 void create_database(Snode*& first, int nn) {
     if (!nn) {

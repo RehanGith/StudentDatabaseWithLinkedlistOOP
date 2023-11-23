@@ -68,6 +68,11 @@ int main() {
             display(first, n);
             break;
         case 7: // Exit
+            while (first) {
+                Snode* next = first->get_Next();
+                delete first;
+                first = next;
+            }
             return 0;
         default:
             cout << "Invalid choice. Enter again..." << endl;
