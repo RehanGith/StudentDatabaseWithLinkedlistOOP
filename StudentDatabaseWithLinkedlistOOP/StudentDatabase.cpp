@@ -244,7 +244,9 @@ int delete_record(Snode*& first, int sinfo, int& nn) {
     Snode* cur{ nullptr }, * prev{ nullptr };
     cur = prev = first;
     if (first->search(sinfo)) {
-        first = first->get_Next();
+        Snode *next = first->get_Next();
+        delete first;
+        first = next;
         nn--;
         return 1;
     }
@@ -253,8 +255,9 @@ int delete_record(Snode*& first, int sinfo, int& nn) {
         cur = cur->get_Next();
     }
     if (cur->search(sinfo)) {
-        Snode* next = prev->get_Next();
-        next = cur->get_Next();
+        Snode* next = cur->get_Next();
+        delete cur;
+        prev->set_Next(next);
         nn--;
         return 1;
     }
