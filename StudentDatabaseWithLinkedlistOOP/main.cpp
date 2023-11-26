@@ -5,7 +5,7 @@ using namespace std;
 #define MAXSUB 5
 
 int main() {
-    Snode* first{ nullptr };
+    Snode* first{  };
     int n{}, ch{}, sinfo{}, index{};
     do
     {

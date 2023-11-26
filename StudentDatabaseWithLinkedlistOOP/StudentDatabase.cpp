@@ -1,99 +1,7 @@
 #include "StudentDatabase.h"
 #include <iostream>
 using namespace std;
-AirTime::AirTime(int h, int m, int s) : hour(h), minute(m), second(s) {
 
-}
-AirTime AirTime::operator + (const AirTime& TT) {
-    int h = hour + TT.hour;
-    if (h > 24)
-        h = h - 24;
-    int m = minute + TT.minute;
-    if (m >= 60) {
-        m -= 60;
-        h++;
-    }
-    int s = second + TT.second;
-    if (s >= 60) {
-        s -= 60;
-        m++;
-    }
-    return AirTime(h, m, s);
-}
-void AirTime::operator +=(const AirTime& TT) {
-    hour += TT.hour;
-    if (hour > 24)
-        hour = hour - 24;
-    minute += TT.minute;
-    if (minute >= 60) {
-        minute -= 60;
-        hour++;
-    }
-    second += TT.second;
-    if (second >= 60) {
-        second -= 60;
-        minute++;
-    }
-}
-AirTime AirTime::operator++() {
-    hour++;
-    if (hour > 24)
-        hour = hour - 24;
-    minute++;
-    if (minute >= 60) {
-        minute -= 60;
-        hour++;
-    }
-    second++;
-    if (second >= 60) {
-        second -= 60;
-        minute++;
-    }
-    return *this;
-}
-AirTime AirTime::operator ++(int) {
-    AirTime temp = *this;
-    hour++;
-    if (hour > 24)
-        hour = hour - 24;
-    minute++;
-    if (minute >= 60) {
-        minute -= 60;
-        hour++;
-    }
-    second++;
-    if (second >= 60) {
-        second -= 60;
-        minute++;
-    }
-    return temp;
-}
-void AirTime::setter() {
-    while (true) {
-        cout << "Enter hour: ";
-        cin >> hour;
-        if (hour < 7 && hour > 20) {
-            cout << "University Hour should be [7,20]. Please correct it" << endl;
-            continue;
-        }
-        cout << "Enter minute: ";
-        cin >> minute;
-        if (minute > 60) {
-            cout << "Please provide correct minutes. Provide again" << endl;
-            continue;
-        }
-        cout << "Enter second: ";
-        cin >> second;
-        if (second > 60) {
-            cout << "Please Provid correct second. Provide again" << endl;
-            continue;
-        }
-        break;
-    }
-}
-void AirTime::getter() const {
-    cout << hour << " : " << minute << " : " << second << endl;
-}
 
 Snode::Snode() :marks{} {
     regNum = 0;
@@ -142,18 +50,9 @@ void Snode::setter() {
 
     cout << "Enter CGPA: ";
     cin >> cgpa;
-    cout << "\nEnter Arrival Time of Student: " << endl;
-    At.setter();
-    cout << "\nEnter Depearture Time of Student: " << endl;
-    Dt.setter();
     cout << endl;
-    cout << "Student data added sucessfully\n" << endl;
 }
 void Snode::getter() const {
-    cout << "Arivial Time:" << endl;
-    At.getter();
-    cout << "Deperature time:" << endl;
-    Dt.getter();
     cout << "Result Card for Students: " << regNum << endl;
     cout << "-----------------------------------------------------\n";
     cout << "| Name:  " << name << " " << regNum << endl;
